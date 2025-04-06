@@ -73,6 +73,11 @@
                         <i class="fa fa-cart-plus"></i> <span>{{ __('title.new_transaction') }}</span>
                     </a>
                 </li>
+                <li>
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>{{ __('title.active_transaction') }}</span>
+                </a>
+            </li>
 
                 <li class="header">{{ __('title.report') }}</li>
                 <li class="{{ request()->routeIs('laporan.index') ? 'active' : '' }}">
@@ -93,11 +98,16 @@
                     </a>
                 </li>
             @else
-                <li class="{{ request()->routeIs('transaksi.baru') ? 'active' : '' }}">
+                <li>
                     <a href="{{ route('transaksi.baru') }}">
                         <i class="fa fa-cart-plus"></i> <span>{{ __('title.new_transaction') }}</span>
                     </a>
                 </li>
+                <li>
+                <a href="{{ route('transaksi.index') }}">
+                    <i class="fa fa-cart-arrow-down"></i> <span>{{ __('title.active_transaction') }}</span>
+                </a>
+            </li>
             @endif
         </ul>
     </section>

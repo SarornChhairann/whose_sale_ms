@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Profile
+    {{ __('btn.editProfile') }}
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Edit Profile</li>
+    <li class="active">{{ __('btn.editProfile') }}</li>
 @endsection
 
 @section('content')
@@ -18,17 +18,17 @@
                 <div class="box-body">
                     <div class="alert alert-info alert-dismissible" style="display: none;">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="icon fa fa-check"></i> Changes saved successfully
+                        <i class="icon fa fa-check"></i> {{ __('message.changeSuccess') }}
                     </div>
                     <div class="form-group row">
-                        <label for="name" class="col-lg-2 control-label">Name</label>
+                        <label for="name" class="col-lg-2 control-label">{{ __('content.name') }}</label>
                         <div class="col-lg-6">
                             <input type="text" name="name" class="form-control" id="name" required autofocus value="{{ $profil->name }}">
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="foto" class="col-lg-2 control-label">Profile</label>
+                        <label for="foto" class="col-lg-2 control-label">{{ __('content.profile') }}</label>
                         <div class="col-lg-4">
                             <input type="file" name="foto" class="form-control" id="foto"
                                 onchange="preview('.tampil-foto', this.files[0])">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="old_password" class="col-lg-2 control-label">Old Password</label>
+                        <label for="old_password" class="col-lg-2 control-label">{{ __('content.oldPassword') }}</label>
                         <div class="col-lg-6">
                             <input type="password" name="old_password" id="old_password" class="form-control" 
                             minlength="6">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="password" class="col-lg-2 control-label">Password</label>
+                        <label for="password" class="col-lg-2 control-label">{{ __('content.password') }}</label>
                         <div class="col-lg-6">
                             <input type="password" name="password" id="password" class="form-control" 
                             minlength="6">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="password_confirmation" class="col-lg-2 control-label">Confirm Password</label>
+                        <label for="password_confirmation" class="col-lg-2 control-label">{{ __('content.confirmPassword') }}</label>
                         <div class="col-lg-6">
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" 
                                 data-match="#password">
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="box-footer text-right">
-                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Save Changes</button>
+                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> {{ __('btn.save') }}</button>
                 </div>
             </form>
         </div>

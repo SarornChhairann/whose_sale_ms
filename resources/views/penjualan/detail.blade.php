@@ -4,17 +4,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Sales Details</h4>
+                <h4 class="modal-title">{{ __('content.salesDetail') }}</h4>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-bordered table-detail table-hover">
                     <thead>
                         <th width="5%">#</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
+                        <th>{{ __('content.code') }}</th>
+                        <th>{{ __('content.name') }}</th>
+                        <th>{{ __('content.price') }}</th>
+                        <th>{{ __('content.quantity') }}</th>
+                        <th>{{ __('content.subtotal') }}</th>
                     </thead>
                 </table>
             </div>

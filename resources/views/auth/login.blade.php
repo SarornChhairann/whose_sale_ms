@@ -3,18 +3,9 @@
 @section('login')
 
 <style>
-    .sidebar-menu > li.active > a {
-        background-color: #fff !important;
-        color: #fff !important;
-    }
-    .sidebar-menu > li.active > a i {
-        color: #fff !important;
-    }
-
     .language-switcher .btn {
         border-radius: 50px;
-        background: linear-gradient(135deg, #00a65a, #008d4c);
-        color: white;
+        color: black;
         padding: 6px 14px;
         font-weight: 500;
     }
@@ -42,7 +33,7 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <!-- Language switcher aligned to the right -->
-        <div class="btn-group language-switcher">
+        <div class="btn-group language-switcher" style="float: right; margin-top: 5px;">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @if (app()->getLocale() === 'en')
                     <img src="{{ asset('img/en_flag.png') }}" alt="English" width="20" height="20"> {{ __('messages.english') }}

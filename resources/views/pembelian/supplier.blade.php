@@ -4,15 +4,15 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Select Supplier</h4>
+                <h4 class="modal-title">{{ __('btn.chooseSupplier') }}</h4>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-bordered table-supplier table-hover">
                     <thead>
                         <th width="5%">#</th>
-                        <th>Name</th>
-                        <th>Telephone</th>
-                        <th>Address</th>
+                        <th>{{ __('content.name') }}</th>
+                        <th>{{ __('content.phone') }}</th>
+                        <th>{{ __('content.address') }}</th>
                         <th><i class="fa fa-cog"></i></th>
                     </thead>
                     <tbody>
@@ -25,7 +25,7 @@
                                 <td>
                                     <a href="{{ route('pembelian.create', $item->id_supplier) }}" class="btn btn-primary btn-xs btn-flat">
                                         <i class="fa fa-check-circle"></i>
-                                        Select
+                                        {{ __('btn.select') }}
                                     </a>
                                 </td>
                             </tr>

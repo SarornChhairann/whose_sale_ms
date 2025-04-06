@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Dashboard
+    {{ __('title.dashboard') }}
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">Dashboard</li>
+    <li class="active">{{ __('title.dashboard') }}</li>
 @endsection
 
 @section('content')
@@ -18,12 +18,12 @@
             <div class="inner">
                 <h3>{{ $kategori }}</h3>
 
-                <p>Total Categories</p>
+                <p>{{ __('content.totalCategory') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cube"></i>
             </div>
-            <a href="{{ route('kategori.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('kategori.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col --><!-- visit "codingabelweb" for more projects! -->
@@ -33,12 +33,12 @@
             <div class="inner">
                 <h3>{{ $produk }}</h3>
 
-                <p>Total Product</p>
+                <p>{{ __('content.totalProduct') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-cubes"></i>
             </div>
-            <a href="{{ route('produk.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('produk.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -48,12 +48,12 @@
             <div class="inner">
                 <h3>{{ $member }}</h3>
 
-                <p>Total Member</p>
+                <p>{{ __('content.totalMember') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-id-card"></i>
             </div>
-            <a href="{{ route('member.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('member.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -63,12 +63,12 @@
             <div class="inner">
                 <h3>{{ $supplier }}</h3>
 
-                <p>Total Supplier</p>
+                <p>{{ __('content.totalSupplier') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-truck"></i>
             </div>
-            <a href="{{ route('supplier.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('supplier.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -82,12 +82,12 @@
             <div class="inner">
                 <h3>{{ $penjualan }}</h3>
 
-                <p>Sales</p>
+                <p>{{ __('content.totalSale') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-dollar"></i>
             </div>
-            <a href="{{ route('penjualan.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('penjualan.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -98,12 +98,12 @@
             <div class="inner">
                 <h3>{{ $pengeluaran }}</h3>
 
-                <p>Total Expenses</p>
+                <p>{{ __('content.totalExpense') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-dollar"></i>
             </div>
-            <a href="{{ route('pengeluaran.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('pengeluaran.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -114,12 +114,12 @@
             <div class="inner">
                 <h3>{{ $pembelian }}</h3>
 
-                <p>Total Purchase</p>
+                <p>{{ __('content.totalPurchase') }}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-dollar"></i>
             </div>
-            <a href="{{ route('pembelian.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('pembelian.index') }}" class="small-box-footer">{{ __('btn.view') }} <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -131,7 +131,7 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Income Chart {{ tanggal_indonesia($tanggal_awal, false) }} - {{ tanggal_indonesia($tanggal_akhir, false) }}</h3>
+                <h3 class="box-title">{{ __('content.incomeChart') }} {{ tanggal_indonesia($tanggal_awal, false) }} - {{ tanggal_indonesia($tanggal_akhir, false) }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

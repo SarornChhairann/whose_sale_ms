@@ -63,9 +63,9 @@
                 <div class="btn-group language-switcher" style="margin-top: 5px;">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @if (app()->getLocale() === 'en')
-                            <img src="{{ asset('img/en_flag.png') }}" alt="English" width="20" height="20"> {{ __('messages.english') }}
+                            <img src="{{ asset('img/en_flag.png') }}" alt="English" width="20" height="20"> 
                         @else
-                            <img src="{{ asset('img/kh_flag.png') }}" alt="Khmer" width="20" height="20"> {{ __('messages.khmer') }}
+                            <img src="{{ asset('img/kh_flag.png') }}" alt="Khmer" width="20" height="20"> 
                         @endif
                         <span class="caret"></span>
                     </button>

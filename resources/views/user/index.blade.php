@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    User List
+    {{ __('title.user') }}
 @endsection
 
 @section('breadcrumb')
     @parent
-    <li class="active">User List</li>
+    <li class="active">{{ __('title.user') }}</li>
 @endsection
 
 @section('content')
@@ -14,14 +14,14 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <button onclick="addForm('{{ route('user.store') }}')" class="btn btn-success btn-flat"><i class="fa fa-plus-circle"></i> Add New System User</button>
+                <button onclick="addForm('{{ route('user.store') }}')" class="btn btn-success btn-flat"><i class="fa fa-plus-circle"></i> {{ __('btn.add') }}</button>
             </div>
             <div class="box-body table-responsive">
                 <table class="table table-stiped table-bordered table-hover">
                     <thead>
                         <th width="5%">#</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>{{ __('content.name') }}</th>
+                        <th>{{ __('content.email') }}</th>
                         <th width="15%"><i class="fa fa-cog"></i></th>
                     </thead>
                 </table>
@@ -51,7 +51,49 @@
                 {data: 'name'},
                 {data: 'email'},
                 {data: 'aksi', searchable: false, sortable: false},
-            ]
+            ],
+            language: {
+                info: '{{ __("pagination.showing", ["start" => "_START_", "end" => "_END_", "total" => "_TOTAL_"]) }}',
+                infoEmpty: '{{ __("pagination.info_empty") }}',
+                emptyTable: '{{ __("pagination.empty_table") }}',
+                lengthMenu: '{{ __("pagination.length_menu") }}',
+                loadingRecords: '{{ __("pagination.loading") }}',
+                processing: '{{ __("pagination.processing") }}',
+                search: '{{ __("pagination.search") }}',
+                zeroRecords: '{{ __("pagination.zero_records") }}',
+                paginate: {
+                    previous: '{{ __("pagination.previous") }}',
+                    next: '{{ __("pagination.next") }}'
+                }
+            },
+
+            drawCallback: function (settings) {
+                let json = settings.json;
+                let filteredRecords = json.recordsFiltered;
+                console.log('Filtered Records:', filteredRecords);
+                let tbody = $('.table tbody');
+                let noDataHtml = `
+                    <tr class="no-data-row">
+                        <td colspan="11" class="no-data-cell">
+                            <div class="no-data-container">
+                                <lottie-player
+                                    src="{{ asset('animation/not-found.json') }}"
+                                    background="transparent"
+                                    speed="1"
+                                    style="width: 120px; height: 120px; margin: 0 auto;"
+                                    loop
+                                    autoplay
+                                ></lottie-player>
+                                <p>{{ __('messages.noUserFound') }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+
+                if (filteredRecords === 0) {
+                    tbody.html(noDataHtml);
+                }
+            }
         });
 
         $('#modal-form').validator().on('submit', function (e) {
@@ -71,7 +113,7 @@
 
     function addForm(url) {
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Add User');
+        $('#modal-form .modal-title').text('{{ __("btn.addUser") }}');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
@@ -83,7 +125,7 @@
 
     function editForm(url) {
         $('#modal-form').modal('show');
-        $('#modal-form .modal-title').text('Edit User');
+        $('#modal-form .modal-title').text('{{ __("btn.editUser") }}');
 
         $('#modal-form form')[0].reset();
         $('#modal-form form').attr('action', url);
@@ -98,13 +140,13 @@
                 $('#modal-form [name=email]').val(response.email);
             })
             .fail((errors) => {
-                alert('Unable to display data');
+                alert('{{ __("messages.error_fetch") }}');
                 return;
             });
     }
 
     function deleteData(url) {
-        if (confirm('Are you sure you want to delete selected data?')) {
+        if (confirm('{{ __("messages.deleteConfirmation") }}')) {
             $.post(url, {
                     '_token': $('[name=csrf-token]').attr('content'),
                     '_method': 'delete'
@@ -113,10 +155,25 @@
                     table.ajax.reload();
                 })
                 .fail((errors) => {
-                    alert('Unable to delete data');
+                    alert('{{ __("messages.error_delete") }}');
                     return;
                 });
         }
     }
 </script>
+<style>
+    .no-data-cell {
+        text-align: center;
+        vertical-align: middle;
+        height: 200px; /* Match Lottie height */
+    }
+
+    .no-data-container {
+        display: inline-block;
+    }
+
+    .no-data-container p {
+        margin-top: 10px;
+    }
+</style>
 @endpush

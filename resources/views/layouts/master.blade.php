@@ -86,6 +86,8 @@
     <!-- Validator -->
     <script src="{{ asset('js/validator.min.js') }}"></script>
 
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
     <script>
         function preview(selector, temporaryFile, width = 200)  {
             $(selector).empty();

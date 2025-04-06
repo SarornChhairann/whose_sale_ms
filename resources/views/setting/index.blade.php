@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
     @parent
-    <li class="active">Settings</li>
+    <li class="active">{{ __('title.setting') }}</li>
 @endsection
 
 @section('content')
@@ -18,31 +18,31 @@
                 <div class="box-body">
                     <div class="alert alert-info alert-dismissible" style="display: none;">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <i class="icon fa fa-check"></i> Changes saved successfully
+                        <i class="icon fa fa-check"></i> {{ __('message.changeSuccess') }}
                     </div>
                     <div class="form-group row">
-                        <label for="nama_perusahaan" class="col-lg-2 control-label">Company name</label>
+                        <label for="nama_perusahaan" class="col-lg-2 control-label">{{ __('content.companyName') }}</label>
                         <div class="col-lg-6">
                             <input type="text" name="nama_perusahaan" class="form-control" id="nama_perusahaan" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="telepon" class="col-lg-2 control-label">Telephone</label>
+                        <label for="telepon" class="col-lg-2 control-label">{{ __('content.phone') }}</label>
                         <div class="col-lg-6">
                             <input type="text" name="telepon" class="form-control" id="telepon" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="alamat" class="col-lg-2 control-label">Address</label>
+                        <label for="alamat" class="col-lg-2 control-label">{{ __('content.address') }}</label>
                         <div class="col-lg-6">
                             <textarea name="alamat" class="form-control" id="alamat" rows="3" required></textarea>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="path_logo" class="col-lg-2 control-label">Logo</label>
+                        <label for="path_logo" class="col-lg-2 control-label">{{ __('content.logo') }}</label>
                         <div class="col-lg-4">
                             <input type="file" name="path_logo" class="form-control" id="path_logo"
                                 onchange="preview('.tampil-logo', this.files[0])">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="path_kartu_member" class="col-lg-2 control-label">Membership Card</label>
+                        <label for="path_kartu_member" class="col-lg-2 control-label">{{ __('content.memberCard') }}</label>
                         <div class="col-lg-4">
                             <input type="file" name="path_kartu_member" class="form-control" id="path_kartu_member"
                                 onchange="preview('.tampil-kartu-member', this.files[0], 300)">
@@ -62,25 +62,25 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="diskon" class="col-lg-2 control-label">Discount</label>
+                        <label for="diskon" class="col-lg-2 control-label">{{ __('content.discount') }}</label>
                         <div class="col-lg-2">
                             <input type="number" name="diskon" class="form-control" id="diskon" required>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="tipe_nota" class="col-lg-2 control-label">Note Type</label>
+                        <label for="tipe_nota" class="col-lg-2 control-label">{{ __('content.noteType') }}</label>
                         <div class="col-lg-2">
                             <select name="tipe_nota" class="form-control" id="tipe_nota" required>
-                                <option value="1">Small Invoice</option>
-                                <option value="2">PDF Invoice</option>
+                                <option value="1">{{ __('content.invoice') }}</option>
+                                <option value="2">{{ __('content.pdfInvoice') }}</option>
                             </select>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                 </div>
                 <div class="box-footer text-right">
-                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> Save Changes</button>
+                    <button class="btn btn-sm btn-flat btn-primary"><i class="fa fa-save"></i> {{ __('btn.save') }}</button>
                 </div>
             </form>
         </div>

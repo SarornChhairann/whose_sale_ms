@@ -12,14 +12,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="deskripsi" class="col-lg-2 col-lg-offset-1 control-label">Description</label>
+                        <label for="deskripsi" class="col-lg-2 col-lg-offset-1 control-label">{{ __('content.description') }}</label>
                         <div class="col-lg-6">
                             <input type="text" name="deskripsi" id="deskripsi" class="form-control" required autofocus>
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="nominal" class="col-lg-2 col-lg-offset-1 control-label">Amount</label>
+                        <label for="nominal" class="col-lg-2 col-lg-offset-1 control-label">{{ __('content.amount') }}</label>
                         <div class="col-lg-6">
                             <input type="number" name="nominal" id="nominal" class="form-control" required>
                             <span class="help-block with-errors"></span>
@@ -27,8 +27,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-flat btn-success"><i class="fa fa-save"></i> Save</button>
-                    <button type="button" class="btn btn-sm btn-flat btn-danger" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Cancel</button>
+                    <button class="btn btn-sm btn-flat btn-success"><i class="fa fa-save"></i> {{ __('btn.save') }}</button>
+                    <button type="button" class="btn btn-sm btn-flat btn-danger" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i>{{ __('btn.cancel') }}</button>
                 </div>
             </div>
         </form>
