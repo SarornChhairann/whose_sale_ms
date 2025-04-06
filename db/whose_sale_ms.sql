@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 06:04 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Host: localhost
+-- Generation Time: Apr 06, 2025 at 09:40 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `larapos`
+-- Database: `whose_sale_ms`
 --
 
 -- --------------------------------------------------------
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -45,7 +45,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `kategori` (
   `id_kategori` int(10) UNSIGNED NOT NULL,
-  `nama_kategori` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_kategori` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -55,7 +55,10 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `created_at`, `updated_at`) VALUES
-(1, 'cata', '2024-11-11 14:05:40', '2024-11-11 14:05:40');
+(1, 'cata', '2024-11-11 14:05:40', '2024-11-11 14:05:40'),
+(2, 'Electronics', '2025-04-05 09:41:34', '2025-04-05 09:41:34'),
+(3, 'Clothing', '2025-04-05 09:45:37', '2025-04-05 09:45:37'),
+(4, 'Food & Beverages', '2025-04-05 09:48:27', '2025-04-05 09:48:27');
 
 -- --------------------------------------------------------
 
@@ -65,10 +68,10 @@ INSERT INTO `kategori` (`id_kategori`, `nama_kategori`, `created_at`, `updated_a
 
 CREATE TABLE `member` (
   `id_member` int(10) UNSIGNED NOT NULL,
-  `kode_member` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `nama` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `alamat` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telepon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `kode_member` varchar(255) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` text DEFAULT NULL,
+  `telepon` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -78,7 +81,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`id_member`, `kode_member`, `nama`, `alamat`, `telepon`, `created_at`, `updated_at`) VALUES
-(1, '00001', 'memb2', 'kahia', '8675747437', '2024-11-11 14:11:43', '2024-11-11 14:11:43');
+(1, '00001', 'memb2', 'kahia', '8675747437', '2024-11-11 14:11:43', '2024-11-11 14:11:43'),
+(2, '00002', 'សារ៉ន ឆៃរ៉ាន់', '271\r\n228', '081234779987', '2025-04-05 09:49:33', '2025-04-05 09:49:33');
 
 -- --------------------------------------------------------
 
@@ -88,7 +92,7 @@ INSERT INTO `member` (`id_member`, `kode_member`, `nama`, `alamat`, `telepon`, `
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -97,27 +101,27 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(4, '2019_08_19_000000_create_failed_jobs_table', 1),
-(5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(6, '2021_03_05_194740_tambah_kolom_baru_to_users_table', 1),
-(7, '2021_03_05_195441_buat_kategori_table', 1),
-(8, '2021_03_05_195949_buat_produk_table', 1),
-(9, '2021_03_05_200515_buat_member_table', 1),
-(10, '2021_03_05_200706_buat_supplier_table', 1),
-(11, '2021_03_05_200841_buat_pembelian_table', 1),
-(12, '2021_03_05_200845_buat_pembelian_detail_table', 1),
-(13, '2021_03_05_200853_buat_penjualan_table', 1),
-(14, '2021_03_05_200858_buat_penjualan_detail_table', 1),
-(15, '2021_03_05_200904_buat_setting_table', 1),
-(16, '2021_03_05_201756_buat_pengeluaran_table', 1),
-(17, '2021_03_11_225128_create_sessions_table', 1),
-(18, '2021_03_24_115009_tambah_foreign_key_to_produk_table', 1),
-(19, '2021_03_24_131829_tambah_kode_produk_to_produk_table', 1),
-(20, '2021_05_08_220315_tambah_diskon_to_setting_table', 1),
-(21, '2021_05_09_124745_edit_id_member_to_penjualan_table', 1);
+(1, '2025_04_06_000000_create_users_table', 1),
+(2, '2025_04_06_100000_create_password_resets_table', 1),
+(3, '2025_04_06_200000_add_two_factor_columns_to_users_table', 1),
+(4, '2025_04_06_000000_create_failed_jobs_table', 1),
+(5, '2025_04_06_000001_create_personal_access_tokens_table', 1),
+(6, '2025_04_06_194740_tambah_kolom_baru_to_users_table', 1),
+(7, '2025_04_06_195441_buat_kategori_table', 1),
+(8, '2025_04_06_195949_buat_produk_table', 1),
+(9, '2025_04_06_200515_buat_member_table', 1),
+(10, '2025_04_06_200706_buat_supplier_table', 1),
+(11, '2025_04_06_200841_buat_pembelian_table', 1),
+(12, '2025_04_06_200845_buat_pembelian_detail_table', 1),
+(13, '2025_04_06_200853_buat_penjualan_table', 1),
+(14, '2025_04_06_200858_buat_penjualan_detail_table', 1),
+(15, '2025_04_06_200904_buat_setting_table', 1),
+(16, '2025_04_06_201756_buat_pengeluaran_table', 1),
+(17, '2025_04_06_225128_create_sessions_table', 1),
+(18, '2025_04_06_115009_tambah_foreign_key_to_produk_table', 1),
+(19, '2025_04_06_131829_tambah_kode_produk_to_produk_table', 1),
+(20, '2025_04_06_220315_tambah_diskon_to_setting_table', 1),
+(21, '2025_04_06_124745_edit_id_member_to_penjualan_table', 1);
 
 -- --------------------------------------------------------
 
@@ -126,8 +130,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -147,13 +151,6 @@ CREATE TABLE `pembelian` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `pembelian`
---
-
-INSERT INTO `pembelian` (`id_pembelian`, `id_supplier`, `total_item`, `total_harga`, `diskon`, `bayar`, `created_at`, `updated_at`) VALUES
-(1, 1, 0, 0, 0, 0, '2024-11-11 14:12:40', '2024-11-11 14:12:40');
 
 -- --------------------------------------------------------
 
@@ -180,18 +177,11 @@ CREATE TABLE `pembelian_detail` (
 
 CREATE TABLE `pengeluaran` (
   `id_pengeluaran` int(10) UNSIGNED NOT NULL,
-  `deskripsi` text COLLATE utf8_unicode_ci NOT NULL,
+  `deskripsi` text NOT NULL,
   `nominal` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `pengeluaran`
---
-
-INSERT INTO `pengeluaran` (`id_pengeluaran`, `deskripsi`, `nominal`, `created_at`, `updated_at`) VALUES
-(1, 'dep', 100, '2024-11-11 14:12:30', '2024-11-11 14:12:30');
 
 -- --------------------------------------------------------
 
@@ -217,10 +207,12 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id_penjualan`, `id_member`, `total_item`, `total_harga`, `diskon`, `bayar`, `diterima`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, NULL, 0, 0, 0, 0, 0, 1, '2024-11-11 14:13:22', '2024-11-11 14:13:22'),
-(2, NULL, 0, 0, 0, 0, 0, 7, '2024-11-11 16:14:54', '2024-11-11 16:14:54'),
-(3, NULL, 0, 0, 0, 0, 0, 7, '2024-11-11 16:14:56', '2024-11-11 16:14:56'),
-(4, NULL, 0, 0, 0, 0, 0, 7, '2024-11-11 16:15:10', '2024-11-11 16:15:10');
+(9, NULL, 1, 711, 0, 711, 0, 1, '2025-04-05 08:56:30', '2025-04-05 08:56:38'),
+(15, NULL, 0, 0, 0, 0, 0, 6, '2025-04-05 22:39:40', '2025-04-05 22:39:40'),
+(16, NULL, 0, 0, 0, 0, 0, 1, '2025-04-06 00:05:48', '2025-04-06 00:05:48'),
+(17, NULL, 0, 0, 0, 0, 0, 1, '2025-04-06 00:35:09', '2025-04-06 00:35:09'),
+(18, NULL, 0, 0, 0, 0, 0, 1, '2025-04-06 00:35:16', '2025-04-06 00:35:16'),
+(19, NULL, 0, 0, 0, 0, 0, 1, '2025-04-06 00:35:18', '2025-04-06 00:35:18');
 
 -- --------------------------------------------------------
 
@@ -240,6 +232,15 @@ CREATE TABLE `penjualan_detail` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `penjualan_detail`
+--
+
+INSERT INTO `penjualan_detail` (`id_penjualan_detail`, `id_penjualan`, `id_produk`, `harga_jual`, `jumlah`, `diskon`, `subtotal`, `created_at`, `updated_at`) VALUES
+(1, 9, 1, 790, 1, 0, 711, '2025-04-05 08:56:36', '2025-04-05 08:56:38'),
+(2, 19, 1, 790, 1, 10, 711, '2025-04-06 00:35:33', '2025-04-06 00:35:33'),
+(3, 19, 3, 350, 1, 0, 350, '2025-04-06 00:35:35', '2025-04-06 00:35:35');
+
 -- --------------------------------------------------------
 
 --
@@ -248,11 +249,11 @@ CREATE TABLE `penjualan_detail` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -267,9 +268,9 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `produk` (
   `id_produk` int(10) UNSIGNED NOT NULL,
   `id_kategori` int(10) UNSIGNED NOT NULL,
-  `kode_produk` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `nama_produk` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `merk` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kode_produk` varchar(255) NOT NULL,
+  `nama_produk` varchar(255) NOT NULL,
+  `merk` varchar(255) DEFAULT NULL,
   `harga_beli` int(11) NOT NULL,
   `diskon` tinyint(4) NOT NULL DEFAULT 0,
   `harga_jual` int(11) NOT NULL,
@@ -283,7 +284,11 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `id_kategori`, `kode_produk`, `nama_produk`, `merk`, `harga_beli`, `diskon`, `harga_jual`, `stok`, `created_at`, `updated_at`) VALUES
-(1, 1, 'P000001', 'cata name', 'brand 1', 1000, 10, 790, 100, '2024-11-11 14:11:15', '2024-11-11 14:11:15');
+(1, 1, 'P000001', 'cata name', 'brand 1', 1000, 10, 790, 99, '2024-11-11 14:11:15', '2025-04-05 09:56:34'),
+(2, 2, 'P000002', 'Smartphones', 'SamSung', 120, 5, 200, 500, '2025-04-05 09:42:55', '2025-04-05 09:42:55'),
+(3, 2, 'P000003', 'LED TVs', 'Sony', 300, 0, 350, 200, '2025-04-05 09:43:47', '2025-04-05 09:43:47'),
+(4, 3, 'P000004', 'Men’s T-Shirts', NULL, 2, 20, 5, 1000, '2025-04-05 09:46:21', '2025-04-05 09:46:21'),
+(5, 3, 'P000005', 'Women’s Jeans', NULL, 8, 10, 15, 800, '2025-04-05 09:47:00', '2025-04-05 09:47:00');
 
 -- --------------------------------------------------------
 
@@ -292,11 +297,11 @@ INSERT INTO `produk` (`id_produk`, `id_kategori`, `kode_produk`, `nama_produk`, 
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `id` varchar(255) NOT NULL,
   `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `payload` text COLLATE utf8_unicode_ci NOT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` text NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -305,8 +310,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('iRmXIrfec7l6kVch83Ckr6Jz0ikvCXP8z7Qxof13', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieGdHcTVuR1FQcjhvZ1d6bHhLUmlhUU5IVndOM1R2OUlMeVE0aTJiWSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1731352526),
-('p3FpR9xMLQd6HxnDO8VwtmCe2Hpv1pcu0ZN3vEE8', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRmZMOVZuMGFRWjNiVU54dEVQSExjbHNiMVQ1WGRKcHBaQm9sNjB0dyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDI6Imh0dHA6Ly9sb2NhbGhvc3QvUG9pbnRvZlNhbGUtTGFyYXZlbC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1731748631);
+('0NGfqgWtUgjLdTDSc8Oy5gngkfhf5c1pqY69elz0', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiMlF0ZDBZZEtrQ1BLZ2puTWNTUEhtTTBkZTZJUnV3VVpadWdYUklESiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9rYXRlZ29yaSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6MzQ6IiQxJDB4cTB1TlhBJE9uYmZyaUxmaDRmVUxhWU1SOFE0VTEiO3M6NjoibG9jYWxlIjtzOjI6ImtoIjtzOjEyOiJpZF9wZW5qdWFsYW4iO2k6MTk7fQ==', 1743925079),
+('mzSTkrwmA7wSEBwANvHk5tw1lY6KJaLz7zwtWE28', NULL, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.2 Safari/605.1.15', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVW03RmdQTWVwV1QzR3RvaTQxZGs4Vm55eEF5OTFpTTVWTWg4N0dQQiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fX0=', 1743917849);
 
 -- --------------------------------------------------------
 
@@ -316,13 +321,13 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 
 CREATE TABLE `setting` (
   `id_setting` int(10) UNSIGNED NOT NULL,
-  `nama_perusahaan` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `alamat` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telepon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nama_perusahaan` varchar(255) NOT NULL,
+  `alamat` text DEFAULT NULL,
+  `telepon` varchar(255) NOT NULL,
   `tipe_nota` tinyint(4) NOT NULL,
   `diskon` smallint(6) NOT NULL DEFAULT 0,
-  `path_logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `path_kartu_member` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `path_logo` varchar(255) NOT NULL,
+  `path_kartu_member` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -332,7 +337,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id_setting`, `nama_perusahaan`, `alamat`, `telepon`, `tipe_nota`, `diskon`, `path_logo`, `path_kartu_member`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin', '081234779987', 1, 5, '/img/logo.png', '/img/member.png', NULL, NULL);
+(1, 'Admin', 'admin', '081234779987', 2, 5, '/img/logo-20250405155027.png', '/img/member.png', NULL, '2025-04-05 09:05:23');
 
 -- --------------------------------------------------------
 
@@ -342,9 +347,9 @@ INSERT INTO `setting` (`id_setting`, `nama_perusahaan`, `alamat`, `telepon`, `ti
 
 CREATE TABLE `supplier` (
   `id_supplier` int(10) UNSIGNED NOT NULL,
-  `nama` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `alamat` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telepon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` text DEFAULT NULL,
+  `telepon` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -354,7 +359,10 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama`, `alamat`, `telepon`, `created_at`, `updated_at`) VALUES
-(1, 'supply', 'los', '9879696586', '2024-11-11 14:12:14', '2024-11-11 14:12:14');
+(2, 'TechTrend Innovations', 'Shenzhen, China', 'techtrend@wholesale.com', '2025-04-05 09:44:33', '2025-04-05 09:44:33'),
+(3, 'ElectroMart Ltd.', 'Los Angeles, USA', 'sales@electromart.com', '2025-04-05 09:45:20', '2025-04-05 09:45:20'),
+(4, 'FashionBulk Co.', 'Mumbai, India', 'info@fashionbulk.com', '2025-04-05 09:47:39', '2025-04-05 09:47:39'),
+(5, 'StyleWholesale Inc.', 'New York, USA', 'style@wholesaleinc.com', '2025-04-05 09:48:15', '2025-04-05 09:48:15');
 
 -- --------------------------------------------------------
 
@@ -364,17 +372,17 @@ INSERT INTO `supplier` (`id_supplier`, `nama`, `alamat`, `telepon`, `created_at`
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `foto` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `foto` varchar(255) DEFAULT NULL,
   `level` tinyint(4) NOT NULL DEFAULT 0,
-  `two_factor_secret` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `two_factor_recovery_codes` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `two_factor_secret` text DEFAULT NULL,
+  `two_factor_recovery_codes` text DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `profile_photo_path` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `profile_photo_path` text DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -384,9 +392,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `foto`, `level`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'admin@mail.com', NULL, '$2y$10$OQ6qhGwJ5mscLjbHY5vrv.2prcU4ZzhNvp7FUAzL2z3Vq15doKcNy', '/img/user.jpg', 1, NULL, NULL, NULL, NULL, NULL, '2024-11-11 14:03:28', '2024-11-11 14:03:28'),
+(1, 'Administrator', 'admin@mail.com', NULL, '$1$0xq0uNXA$OnbfriLfh4fULaYMR8Q4U1', '/img/logo-20250405155244.jpg', 1, NULL, NULL, NULL, NULL, NULL, '2024-11-11 14:03:28', '2025-04-05 08:52:44'),
 (5, 'admin', 'admin1@mail.com', NULL, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, 'Administrator', 'admin1@gmail.com', NULL, '$2y$10$OQ6qhGwJ5mscLjbHY5vrv.2prcU4ZzhNvp7FUAzL2z3Vq15doKcNy', '/img/user.png', 1, NULL, NULL, NULL, NULL, NULL, '2024-11-11 16:09:25', '2024-11-11 16:09:25'),
+(6, 'Administrator', 'admin1@gmail.com', NULL, '$1$K9UCvIOV$cIyXE6N9kkG0TfkwutFHB1', '/img/user.png', 1, NULL, NULL, NULL, NULL, NULL, '2024-11-11 16:09:25', '2024-11-11 16:09:25'),
 (7, 'user', 'user@mail.com', NULL, '$2y$10$iBJ8LJenO9btoprVRlugm.Am61Hz9AGzrvoo1lddYBTOksDzOG6bS', '/img/user.png', 2, NULL, NULL, NULL, NULL, NULL, '2024-11-11 16:13:37', '2024-11-11 16:13:37');
 
 --
@@ -514,13 +522,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kategori` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-  MODIFY `id_member` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_member` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -532,13 +540,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pembelian` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pembelian_detail`
 --
 ALTER TABLE `pembelian_detail`
-  MODIFY `id_pembelian_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pembelian_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengeluaran`
@@ -550,13 +558,13 @@ ALTER TABLE `pengeluaran`
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `id_penjualan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_penjualan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `penjualan_detail`
 --
 ALTER TABLE `penjualan_detail`
-  MODIFY `id_penjualan_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penjualan_detail` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -568,7 +576,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produk` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -580,7 +588,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_supplier` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
